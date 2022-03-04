@@ -1,17 +1,20 @@
 # If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
-
+export PATH=$HOME/.local/bin:$PATH
+source $HOME/.local/bin/virtualenvwrapper.sh
+export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
+export WORKON_HOME=$HOME/.virtualenvs/
+export VIRTUALENVWRAPPER_VIRTUALENV=$HOME/.local/bin/virtualenv
 # Path to your oh-my-zsh installation.
-export ZSH=$HOME/.oh-my-zsh
+export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="spaceship"
+# ZSH_THEME="robbyrussell"
 
 # Set list of themes to pick from when loading at random
-# Setting this variable when ZSH_THEME="spaceship"
+# Setting this variable when ZSH_THEME=random will cause zsh to load
 # a theme from this variable instead of looking in $ZSH/themes/
 # If set to an empty array, this variable will have no effect.
 # ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
@@ -23,14 +26,13 @@ ZSH_THEME="spaceship"
 # Case-sensitive completion must be off. _ and - will be interchangeable.
 # HYPHEN_INSENSITIVE="true"
 
-# Uncomment the following line to disable bi-weekly auto-update checks.
-DISABLE_AUTO_UPDATE="true"
-
-# Uncomment the following line to automatically update without prompting.
-# DISABLE_UPDATE_PROMPT="true"
+# Uncomment one of the following lines to change the auto-update behavior
+# zstyle ':omz:update' mode disabled  # disable automatic updates
+# zstyle ':omz:update' mode auto      # update automatically without asking
+# zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 
 # Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
+# zstyle ':omz:update' frequency 13
 
 # Uncomment the following line if pasting URLs and other text is messed up.
 # DISABLE_MAGIC_FUNCTIONS="true"
@@ -100,39 +102,10 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+# My Aliases
+alias startsql='sudo systemctl start mysql'
+alias stopsql='sudo systemctl stop mysql'
+alias pipes='pipes.sh -t 3'
+alias v='lvim'
 
-# On-demand rehash
-zshcache_time="$(date +%s%N)"
-
-autoload -Uz add-zsh-hook
-
-rehash_precmd() {
-  if [[ -a /var/cache/zsh/pacman ]]; then
-    local paccache_time="$(date -r /var/cache/zsh/pacman +%s%N)"
-    if (( zshcache_time < paccache_time )); then
-      rehash
-      zshcache_time="$paccache_time"
-    fi
-  fi
-}
-
-add-zsh-hook -Uz precmd rehash_precmd
-
-# omz
-alias zshconfig="geany ~/.zshrc"
-alias ohmyzsh="thunar ~/.oh-my-zsh"
-
-# ls
-alias l='ls -lh'
-alias ll='ls -lah'
-alias la='ls -A'
-alias lm='ls -m'
-alias lr='ls -R'
-alias lg='ls -l --group-directories-first'
-
-# git
-alias gcl='git clone --depth 1'
-alias gi='git init'
-alias ga='git add'
-alias gc='git commit -m'
-alias gp='git push origin master'
+eval "$(starship init zsh)"
