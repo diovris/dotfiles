@@ -1,7 +1,5 @@
 #! /bin/sh
 
-pgrep -x sxhkd > /dev/null || sxhkd &
-
 bspc monitor -d '' '' '' '' '' '' '' '調' ''
 
 bspc config border_width         2
@@ -79,31 +77,41 @@ bspc config focused_border_color        "#AA336A"
 bspc config normal_border_color         "#6c71c4"
 bspc config active_border_color         "#6c71c4"
 
+#Kill if running
+killall -9 xsettingsd sxhkd dunst ksuperkey xfce4-power-manager picom import
+
 #
 # Autostart
 #
-# Set display from arandr saved script
-sh ~/.screenlayout/monitor.sh &
+
+#Powermanager
+powerkit &
+
+# Enable Super Keys For Menu
+ksuperkey -e 'Super_L=Alt_L|F1' &
+ksuperkey -e 'Super_R=Alt_L|F1' &
+
 # Bar
 ~/.config/polybar/launch.sh &
-# Notifications
-/usr/bin/dunst &
+
+#Notifications
+dunst &
+
 # Polkit
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+
 # Wallpaper
 nitrogen --restore &
-# Dex
-dex -a -s /etc/xdg/autostart/:~/.config/autostart/  
+
 # Picom
 picom &
-# Network Applet
-nm-applet --indicator &
+
+# Keyboard
+sxhkd &
 
 # Cursor
 xsetroot -cursor_name left_ptr &
 
-# Low battery notifier
-~/.config/bspwm/scripts/low_bat_notifier.sh &
 #Emacs Daemon
 /usr/bin/emacs --daemon &
 
