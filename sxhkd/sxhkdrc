@@ -11,7 +11,7 @@ super + shift + {f,w,e}
 
 # program launcher
 super + @space
-        ~/.config/rofi/bin/launcher
+        rofi -show drun
 
 # show ssh sesssions
 #super + shift + @space
@@ -20,8 +20,12 @@ super + @space
 #                -show-icons -drun-icon-theme "candy-icons" -font "Droid Sans Regular 10"
 
 # power-menu 
-super + shift + e
-     ~/.config/rofi/bin/powermenu
+super + e
+	powermenu
+
+# wifi-menu
+super + n
+	wifimenu
 
 # make sxhkd reload its configuration files:
 super + Escape
@@ -154,16 +158,13 @@ super + {Left,Down,Up,Right}
 
 # Multimedia keys
 XF86AudioRaiseVolume
-  amixer -q set Master 5%+ unmute
-
+  pamixer -i 5
 # Still multimedia
 XF86AudioLowerVolume
-  amixer -q set Master 5%- unmute
-
+  pamixer -d 5
 # still
 XF86AudioMute
-  amixer -D pulse sset Master toggle-mute
-  
+ pamixer --toggle-mute 
 # amixer -q set Master toggle
 # Simple amixer command seems to have problems unmuting device
 

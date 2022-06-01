@@ -78,18 +78,11 @@ bspc config normal_border_color         "#6c71c4"
 bspc config active_border_color         "#6c71c4"
 
 #Kill if running
-killall -9 xsettingsd sxhkd dunst ksuperkey xfce4-power-manager picom import
+killall -9 xsettingsd sxhkd dunst ksuperkey picom
 
 #
 # Autostart
 #
-
-#Powermanager
-powerkit &
-
-# Enable Super Keys For Menu
-ksuperkey -e 'Super_L=Alt_L|F1' &
-ksuperkey -e 'Super_R=Alt_L|F1' &
 
 # Bar
 ~/.config/polybar/launch.sh &
