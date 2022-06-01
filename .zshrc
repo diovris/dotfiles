@@ -1,9 +1,4 @@
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/.local/bin:$PATH
-source $HOME/.local/bin/virtualenvwrapper.sh
-export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
-export WORKON_HOME=$HOME/.virtualenvs/
-export VIRTUALENVWRAPPER_VIRTUALENV=$HOME/.local/bin/virtualenv
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
@@ -109,3 +104,4 @@ alias pipes='pipes.sh -t 3'
 alias v='lvim'
 
 eval "$(starship init zsh)"
+pfetch
