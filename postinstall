@@ -1,0 +1,17 @@
+#! /bin/bash
+
+echo "Installing needed packages"
+
+sudo pacman -S feh git firefox steam discord rofi polybar zsh 
+
+echo "Installed needed packages"
+
+cd ..
+
+echo "Installing Arch User Repository Helper"
+
+git clone https://aur.archlinux.org/paru
+
+cd Downloads/dotfiles
+
+cp -r alacritty/ bspwm/ paru/ picom.conf  rofi/ polybar/ starship.toml sxhkd/ ~/.config/
