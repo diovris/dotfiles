@@ -58,7 +58,7 @@ declare -a games=(Terraria Brawlhalla)
 bspc rule -a 'Steam' desktop='^8' state=floating follow=off 
 for i in ${games[@]}; do
   bspc rule -a $i desktop='^8' state=fullscreen follow=on; done
-bspc rule -a 'minecraft-launcher' desktop='^8' state=fullscreen follow=on
+bspc rule -a 'Lutris' desktop='^8' state=floating follow=on
 
 # 8 > settings
 bspc rule -a 'Nitrogen' desktop='^9' follow=on focus=on
@@ -94,10 +94,11 @@ dunst &
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 
 # Wallpaper
-nitrogen --restore &
+#nitrogen --restore &
+feh --bg-fill /usr/share/backgrounds/main.png
 
 # Picom
-picom &
+picom --experimental-backends &
 
 # Keyboard
 sxhkd &

@@ -2,7 +2,7 @@
 
 echo "Installing needed packages"
 
-sudo pacman -S feh git firefox steam discord rofi polybar zsh 
+sudo pacman -S feh git firefox steam discord rofi polybar zsh ntfs-3g gvfs thunar thunar-volman thunar-archive-plugin file-roller dunst 
 
 echo "Installed needed packages"
 
