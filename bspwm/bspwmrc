@@ -1,6 +1,6 @@
 #! /bin/sh
 
-bspc monitor -d '' '' '' '' '' '' '' '調' ''
+bspc monitor -d '' '' '' '' '' '' '' '調' ''
 
 bspc config border_width         2
 bspc config window_gap          10
@@ -20,14 +20,15 @@ bspc rule -r *:*
 bspc rule -a Alacritty desktop='^1' follow=on focus=on
 bspc rule -a xfce4-terminal desktop='^1' follow=on focus=on
 
-# 2 > code
-declare -a code=(Geany code-oss)
-for i in ${code[@]}; do
-   bspc rule -a $i desktop='^2' follow=on focus=on; done
-bspc rule -a "Emacs" desktop='^2' state=fullscreen follow=on focus=on
 
 # 3 > web
-bspc rule -a firefox desktop='^3' follow=on focus=on
+bspc rule -a firefox desktop='^2' follow=on focus=on
+
+# 2 > code
+declare -a code=(Geany Code Netbeans)
+for i in ${code[@]}; do
+   bspc rule -a $i desktop='^3' follow=on focus=on; done
+bspc rule -a "Emacs" desktop='^3' state=fullscreen follow=on focus=on
 
 # 4 > files
 declare -a files=(Pcmanfm Thunar qBittorren)
@@ -78,7 +79,7 @@ bspc config normal_border_color         "#6c71c4"
 bspc config active_border_color         "#6c71c4"
 
 #Kill if running
-killall -9 xsettingsd sxhkd dunst ksuperkey picom
+killall -9 xsettingsd feh sxhkd dunst ksuperkey picom polybar
 
 #
 # Autostart
@@ -95,7 +96,7 @@ dunst &
 
 # Wallpaper
 #nitrogen --restore &
-feh --bg-fill /usr/share/backgrounds/main.png
+feh --bg-fill /usr/share/backgrounds/second.jpg
 
 # Picom
 picom --experimental-backends &
@@ -106,6 +107,8 @@ sxhkd &
 # Cursor
 xsetroot -cursor_name left_ptr &
 
-#Emacs Daemon
+# Emacs Daemon
 /usr/bin/emacs --daemon &
 
+# Network Applet
+nm-applet &

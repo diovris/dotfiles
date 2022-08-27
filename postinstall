@@ -1,17 +1,21 @@
 #! /bin/bash
 
-echo "Installing needed packages"
+sudo echo "_JAVA_AWT_WM_NONREPARENTING=1" > /etc/environment
 
-sudo pacman -S feh git firefox steam discord rofi polybar zsh ntfs-3g gvfs thunar thunar-volman thunar-archive-plugin file-roller dunst 
-
-echo "Installed needed packages"
-
-cd ..
+sleep 1
 
 echo "Installing Arch User Repository Helper"
 
-git clone https://aur.archlinux.org/paru
+git clone https://aur.archlinux.org/paru.git && cd paru
 
-cd Downloads/dotfiles
+makepkg -si
 
-cp -r alacritty/ bspwm/ paru/ picom.conf  rofi/ polybar/ starship.toml sxhkd/ ~/.config/
+sleep 1
+
+echo "Installing needed packages"
+
+paru -Syu feh git firefox steam discord rofi polybar zsh maim ntfs-3g gvfs thunar thunar-volman thunar-archive-plugin file-roller dunst xorg-xsetroot polkit
+
+sleep 1
+
+echo "Installed needed packages"

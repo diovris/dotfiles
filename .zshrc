@@ -98,10 +98,10 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 # My Aliases
-alias startsql='sudo systemctl start mysql'
-alias stopsql='sudo systemctl stop mysql'
+alias startsql='sudo lampp startmysql'
+alias stopsql='sudo lampp stopmysql'
 alias pipes='pipes.sh -t 3'
-alias v='lvim'
+alias sail='bash vendor/bin/sail'
 
 eval "$(starship init zsh)"
 pfetch
