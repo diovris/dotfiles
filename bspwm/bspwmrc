@@ -22,13 +22,14 @@ bspc rule -a xfce4-terminal desktop='^1' follow=on focus=on
 
 
 # 3 > web
-bspc rule -a firefox desktop='^2' follow=on focus=on
+bspc rule -a librewolf desktop='^2' follow=on focus=on
 
 # 2 > code
 declare -a code=(Geany Code Netbeans)
 for i in ${code[@]}; do
    bspc rule -a $i desktop='^3' follow=on focus=on; done
 bspc rule -a "Emacs" desktop='^3' state=fullscreen follow=on focus=on
+bspc rule -a "MySQL Workbench" desktop='^3' state=fullscreen follow=on focus=on
 
 # 4 > files
 declare -a files=(Pcmanfm Thunar qBittorren)
@@ -60,6 +61,7 @@ bspc rule -a 'Steam' desktop='^8' state=floating follow=off
 for i in ${games[@]}; do
   bspc rule -a $i desktop='^8' state=fullscreen follow=on; done
 bspc rule -a 'Lutris' desktop='^8' state=floating follow=on
+bspc rule -a 'lunarclient' desktop='^8' state=fullscreen follow=on
 
 # 8 > settings
 bspc rule -a 'Nitrogen' desktop='^9' follow=on focus=on
@@ -79,7 +81,7 @@ bspc config normal_border_color         "#6c71c4"
 bspc config active_border_color         "#6c71c4"
 
 #Kill if running
-killall -9 xsettingsd feh sxhkd dunst ksuperkey picom polybar
+killall -9 xsettingsd feh sxhkd dunst ksuperkey picom polybar nm-applet blueman-applet
 
 #
 # Autostart
@@ -96,7 +98,7 @@ dunst &
 
 # Wallpaper
 #nitrogen --restore &
-feh --bg-fill /usr/share/backgrounds/second.jpg
+feh --bg-fill /usr/share/backgrounds/main.png
 
 # Picom
 picom --experimental-backends &
@@ -112,3 +114,6 @@ xsetroot -cursor_name left_ptr &
 
 # Network Applet
 nm-applet &
+
+# Bluetooth Manager
+blueman-applet &

@@ -1,8 +1,8 @@
 #! /bin/bash
 
-sudo echo "_JAVA_AWT_WM_NONREPARENTING=1" > /etc/environment
+#sudo echo "_JAVA_AWT_WM_NONREPARENTING=1" > /etc/environment
 
-sleep 1
+#sleep 1
 
 echo "Installing Arch User Repository Helper"
 
@@ -14,8 +14,20 @@ sleep 1
 
 echo "Installing needed packages"
 
-paru -Syu feh git firefox steam discord rofi polybar zsh maim ntfs-3g gvfs thunar thunar-volman thunar-archive-plugin file-roller dunst xorg-xsetroot polkit
+paru -Syu reflector docker docker-compose mysql blueman feh git firefox steam discord rofi polybar zsh maim ntfs-3g gvfs thunar thunar-volman thunar-archive-plugin file-roller dunst xorg-xsetroot polkit lxappearance
 
 sleep 1
 
 echo "Installed needed packages"
+
+echo "Install zshell theme"
+
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+sleep 1
+
+curl -sS https://starship.rs/install.sh | sh
+
+sleep 1
+
+echo "Installed zshell theme"
